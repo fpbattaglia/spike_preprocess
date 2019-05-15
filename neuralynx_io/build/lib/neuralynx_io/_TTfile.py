@@ -135,7 +135,8 @@ class TTFile(object):
 			dw = self.fh.read(40)
 			wv[i,:] =fromstring(self.fh.read((nChannels*nSamplesPerSpike*2)), int16)
 
-		t /= tConv
+		t_converted = t / tConv
+		t = t_converted
 		return (t, wv)
 	
 	def genTTData(self, spikeFiles = [], nSpikesAtOnce=50000, nProbes=4, interleave = 0, yieldShiftedTime=False,
